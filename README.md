@@ -5,8 +5,6 @@ What You Can Do
 Get Personalized Book Recommendations: Enter the type of book you’re looking for (like “Data Science” or “Fiction”) and choose a reading level that suits you (Beginner, Intermediate, or Advanced). You can also add keywords to fine-tune your results for specific topics.
 Search Multiple Book Sources: The app pulls book suggestions from popular sources including OpenAI recommendations, Google Books, Project Gutenberg, and even PDFDrive, offering you the best options for online reading or purchase.
 Explore a Range of Book Suggestions: Discover books across genres, from NYT Bestsellers to community favorites on LibraryThing, all conveniently listed in one place for you.
-How It Works
-Enter Your Details:
 
 Book Genre: What kind of book are you looking for? This could be anything from “Data Science” to “Historical Fiction.”
 Reading Level: Choose a level that matches your experience—Beginner, Intermediate, or Advanced.
@@ -15,7 +13,6 @@ Get Recommendations:
 
 After entering your preferences, simply click on "Get Book Recommendations" to start the search.
 The app will return a list of books from different sources based on your criteria.
-View Results:
 
 Each source displays the book title, author, and a link to learn more or access the book. You’ll see recommendations from:
 OpenAI: Custom recommendations based on your input.
@@ -24,9 +21,9 @@ Project Gutenberg: Free eBooks for download.
 NYT Bestsellers: Current top sellers in selected categories.
 LibraryThing: Community-recommended titles.
 PDFDrive: PDF versions of relevant books.
+
 Example of a Search
 Imagine you’re interested in learning data science. Here’s how you would set up your search:
-
 Genre: Data Science
 Level: Beginner
 Keywords: machine learning, Python
@@ -39,10 +36,3 @@ LibraryThing: Community picks for beginner data science learners.
 PDFDrive: Direct PDFs of relevant books if available.
 Need Help?
 If a particular source doesn’t show results, you may need to adjust your genre or keywords to get a broader range of options. This app is designed to guide you to great books across multiple sources—explore and enjoy!
-
-Future Features
-The Book Recommender is always improving! Here are some ideas for future updates:
-
-More book sources for broader recommendations.
-Personalized user profiles to save your favorite genres or reading level.
-Enhanced PDFDrive search for better eBook recommendations
