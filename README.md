@@ -1,38 +1,69 @@
-# Book-Recommender
-Welcome to the Book Recommender! This easy-to-use app helps you find books tailored to your interests, reading level, and specific topics. Whether you’re looking for a great beginner guide in a new field, advanced reads on a favorite topic, or just searching for the next book to dive into, this app provides personalized recommendations from a variety of sources.
+# Book Recommender
 
-What You Can Do
-Get Personalized Book Recommendations: Enter the type of book you’re looking for (like “Data Science” or “Fiction”) and choose a reading level that suits you (Beginner, Intermediate, or Advanced). You can also add keywords to fine-tune your results for specific topics.
-Search Multiple Book Sources: The app pulls book suggestions from popular sources including OpenAI recommendations, Google Books, Project Gutenberg, and even PDFDrive, offering you the best options for online reading or purchase.
-Explore a Range of Book Suggestions: Discover books across genres, from NYT Bestsellers to community favorites on LibraryThing, all conveniently listed in one place for you.
+A Streamlit app that recommends books for a topic and reading level. It combines an AI-written shortlist from OpenAI with live search results from Open Library, Google Books and Project Gutenberg, and optionally the NYT Bestsellers list.
 
-Book Genre: What kind of book are you looking for? This could be anything from “Data Science” to “Historical Fiction.”
-Reading Level: Choose a level that matches your experience—Beginner, Intermediate, or Advanced.
-Keywords: Describe specific themes or topics you want the book to cover. For example, “Python, AI, statistics.”
-Get Recommendations:
+## Features
 
-After entering your preferences, simply click on "Get Book Recommendations" to start the search.
-The app will return a list of books from different sources based on your criteria.
+1. **AI recommendations.** An OpenAI model suggests books for your genre and level, with a reason, pros and cons for each.
+2. **Live search.** Results from:
+   - **Open Library**: catalogue search, with links to each work
+   - **Google Books**: titles, authors and info links
+   - **Project Gutenberg**: free public-domain ebooks, with download pages
+   - **NYT Bestsellers** (optional): current hardcover fiction list, if you add an API key
 
-Each source displays the book title, author, and a link to learn more or access the book. You’ll see recommendations from:
-OpenAI: Custom recommendations based on your input.
-Google Books: Popular books available on Google’s platform.
-Project Gutenberg: Free eBooks for download.
-NYT Bestsellers: Current top sellers in selected categories.
-LibraryThing: Community-recommended titles.
-PDFDrive: PDF versions of relevant books.
+Each source shows up to five results. A source that fails shows its error message rather than failing the whole page.
 
-Example of a Search
-Imagine you’re interested in learning data science. Here’s how you would set up your search:
-Genre: Data Science
-Level: Beginner
-Keywords: machine learning, Python
-Sample Results:
-OpenAI Recommendations: A curated list of books with explanations of why each one is recommended.
-Google Books: Titles with links to Google Books for further details.
-Project Gutenberg: Free data science eBooks to download.
-NYT Bestsellers: Top current books, updated regularly.
-LibraryThing: Community picks for beginner data science learners.
-PDFDrive: Direct PDFs of relevant books if available.
-Need Help?
-If a particular source doesn’t show results, you may need to adjust your genre or keywords to get a broader range of options. This app is designed to guide you to great books across multiple sources—explore and enjoy!
+## Setup
+
+1. Install the dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Copy the secrets template and add your keys:
+
+   ```bash
+   cp .streamlit/secrets.toml.example .streamlit/secrets.toml
+   ```
+
+   - `[openai] api_key` is required.
+   - `[nyt] api_key` is optional. Without it, the NYT source is skipped.
+
+   Never commit `.streamlit/secrets.toml`. It is listed in `.gitignore`.
+
+3. Run the app:
+
+   ```bash
+   streamlit run Book_Recommender.py
+   ```
+
+## Usage
+
+1. Enter a **genre** (for example, "Data Science" or "Historical Fiction").
+2. Choose a **level**: Beginner, Intermediate or Advanced.
+3. Enter **keywords** separated by commas, for example "machine learning, Python".
+4. Click **Get Book Recommendations**.
+
+## Configuration
+
+| Setting | Where | Default |
+|---|---|---|
+| OpenAI model | `OPENAI_MODEL` in `Book_Recommender.py` | `gpt-4o-mini` |
+| Results per source | `[:5]` slices and `maxResults` / `limit` in the search functions | 5 |
+| HTTP timeout | `REQUEST_TIMEOUT` | 10 seconds |
+
+## Notes and limitations
+
+- AI recommendations are generated, not looked up. Check that a suggested title exists before buying it.
+- Search quality depends on the source. Broad genres with many keywords can return few results; try fewer, more specific keywords.
+- The app has no automated tests yet. Test changes by running the app with a valid OpenAI key.
+
+## Project structure
+
+| File | Purpose |
+|---|---|
+| `Book_Recommender.py` | The Streamlit app and all source integrations |
+| `requirements.txt` | Python dependencies |
+| `.streamlit/secrets.toml.example` | Template for API keys |
+| `.gitignore` | Keeps secrets and caches out of git |
